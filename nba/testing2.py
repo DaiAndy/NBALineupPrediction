@@ -188,7 +188,7 @@ for _, row in df2015.iterrows():
 def possibleTeamPlayers(season, team):
 
     # if 2007, use itself, 2008 use 2007, and 2009, use 2008 and 2007, else every other season takes 3 seasons before it
-    if season < 2007:
+    if season == 2007:
         return season2007Array.get(team, set())
     elif season == 2008:
         return season2007Array.get(team, set())
@@ -330,7 +330,7 @@ for lineup, home_team, missingSpot, row_idx, startTime in zip(testLineups, testH
     # best player compared with each other using cosine function
     bestPlayer = closestPlayer(predictedEmb, home_team, teamPlayers, playerVectors)
 
-    predictions.append({"row_idx": row_idx, "season": season, "Fifth_Player": bestPlayer})
+    predictions.append({"Game_ID": season , "Home_Team": home_team, "Fifth_Player": bestPlayer})
 
 # saving the prediction via the dataframe and then to a csv file
 predictions_df = pd.DataFrame(predictions)
